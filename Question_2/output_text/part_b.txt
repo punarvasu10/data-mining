@@ -1,0 +1,16 @@
+(b) MINHASH SIZE  --  measured error vs exact Jaccard on 900 labelled pairs
+==============================================================================
+
+  Application target: error <= 0.05 at p=0.8
+  Formula sqrt(p(1-p)/k) <= err  =>  k >= 64
+  We adopt k = 128 (2x headroom).
+
+  Realised error over n=900 pairs:
+    mean  = 0.0022
+    p50   = 0.0000
+    p95   = 0.0156
+    p99   = 0.0487
+    max   = 0.0982
+  Theoretical p95 at k=128, p=0.8 was 0.035.  Observed p95 = 0.0156  (better, because signals are short).
+
+==============================================================================

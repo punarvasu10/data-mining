@@ -1,0 +1,21 @@
+﻿(c) LSH 32 x 4  --  P(retrieved | true similarity) and operating point
+==============================================================================
+
+  Curve for b=32 bands x r=4 rows = 128 perms:
+        s     P(retrieve|s)
+     0.10            0.0032
+     0.20            0.0500
+     0.30            0.2291
+     0.40            0.5639
+     0.50            0.8732
+     0.60            0.9882
+     0.70            0.9998
+     0.80            1.0000
+     0.90            1.0000
+     0.95            1.0000
+
+  Operating point: threshold 0.8 (chosen by cost asymmetry)
+    C_merge (false merge) / C_split (false split) assumed = 100:1
+    => operate at recall = 1.0, fp_rate = 0.0 on labelled pairs
+
+==============================================================================

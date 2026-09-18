@@ -1,0 +1,6 @@
+﻿(d) DB access path  --  B-tree index vs full scan
+==============================================================================
+  use_index=True  plan=[(3, 0, 0, 'SEARCH lsh_bands USING INDEX idx_band_hash (band_hash=?)')]  time(1000 lookups)=0.066s
+  use_index=False  plan=[(2, 0, 0, 'SCAN lsh_bands')]  time(1000 lookups)=9.891s
+
+==============================================================================

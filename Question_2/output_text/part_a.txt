@@ -1,0 +1,18 @@
+﻿(a) SIGNAL DEFINITION  --  how the score separates same vs different pairs
+==============================================================================
+
+Two same pairs and two different pairs, scored under two signals:
+
+  columns: choice-1 (body minus boilerplate)   choice-2 (Name-of-Work only)
+------------------------------------------------------------------------------
+  same       N010018 vs N010020     J_full=0.334     J_nameofwork=1.000
+  same       N005451 vs N005452     J_full=0.347     J_nameofwork=1.000
+  different  N007876 vs N008565     J_full=0.480     J_nameofwork=0.000
+  different  N008464 vs N010231     J_full=0.271     J_nameofwork=0.000
+
+Distributions over all 900 labelled pairs, under each choice:
+------------------------------------------------------------------------------
+  body - boilerplate      same: mean=0.750 min=0.279 |  different: mean=0.400 max=0.632
+  Name-of-Work only       same: mean=1.000 min=1.000 |  different: mean=0.030 max=0.778
+
+==============================================================================

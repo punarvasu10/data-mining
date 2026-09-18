@@ -1,0 +1,24 @@
+﻿(e) Uneven work across the corpus + measured mitigation cost
+==============================================================================
+
+  Building in-memory LSH buckets...
+  Computing candidate lists per notice...
+
+  Candidate list sizes (all 32 bands, union):
+    min=0  median=283  p95=613  p99=691  max=765
+    top 1% of notices contribute 2.5% of all candidate pairs
+    total candidate pairs: 3487768
+
+  Mitigation: cap each notice's candidate list at C.
+        C       pairs  recall(same)  fp_rate(diff)
+     none     3487768         1.000          0.027
+      100     1063406         1.000          0.018
+       30      357347         1.000          0.006
+       10      119810         0.996          0.003
+        5       59967         0.975          0.002
+
+  Stable card IDs (SHA1 of signal, first 12 hex):
+    unique cards: 5194 of 12000 notices
+    average copies per tender: 2.31
+
+[done]
