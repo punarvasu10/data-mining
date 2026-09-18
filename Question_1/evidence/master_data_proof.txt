@@ -1,0 +1,20 @@
+MASTER-DATA NON-COPY PROOF
+==========================
+
+Object store contents (MinIO):
+  s3://annapurna/curated/store_id=*/business_date=*/data.parquet
+  → 4389 objects, only sales line data.
+  → 44,236,871 bytes total.
+
+PostgreSQL master tables:
+  stores              (12 rows)
+  products            (1224 rows)
+  product_categories  (14 rows)
+
+No Parquet file named stores*, products*, or product_categories*
+exists under s3://annapurna/curated/.
+
+DuckDB joins PostgreSQL and Parquet live at query time
+(see explain_analyze.txt), which shows TABLE_SCAN nodes for
+stores, products, and product_categories alongside the
+READ_PARQUET node for MinIO.

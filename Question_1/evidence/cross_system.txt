@@ -1,0 +1,29 @@
+CROSS-SYSTEM QUERY EVIDENCE
+===========================
+
+Sales: MinIO object store / Parquet
+Master data: PostgreSQL
+Engine: DuckDB
+No copy of PostgreSQL master data into object store was used.
+
+business_date store_id            store_name         category_name  revenue_inr
+   2024-10-01      S01   Annapurna Jayanagar             Baby Care     36554.00
+   2024-10-01      S01   Annapurna Jayanagar                Bakery      3135.10
+   2024-10-01      S01   Annapurna Jayanagar             Beverages      7999.77
+   2024-10-01      S01   Annapurna Jayanagar     Biscuits & Snacks      1382.73
+   2024-10-01      S01   Annapurna Jayanagar         Confectionery      5938.94
+   2024-10-01      S01   Annapurna Jayanagar                 Dairy     20671.99
+   2024-10-01      S01   Annapurna Jayanagar           Edible Oils     20043.02
+   2024-10-01      S01   Annapurna Jayanagar Frozen & Ready to Eat     10835.80
+   2024-10-01      S01   Annapurna Jayanagar   Fruits & Vegetables      5886.22
+   2024-10-01      S01   Annapurna Jayanagar             Home Care      5638.44
+   2024-10-01      S01   Annapurna Jayanagar         Personal Care      6497.57
+   2024-10-01      S01   Annapurna Jayanagar       Spices & Masala      6763.03
+   2024-10-01      S01   Annapurna Jayanagar      Staples & Grains     15628.29
+   2024-10-01      S01   Annapurna Jayanagar  Stationery & General      6739.20
+   2024-10-01      S01   Annapurna Jayanagar                   NaN     -1134.62
+   2024-10-01      S02 Annapurna Koramangala             Baby Care     24764.87
+   2024-10-01      S02 Annapurna Koramangala                Bakery      1720.26
+   2024-10-01      S02 Annapurna Koramangala             Beverages      3979.07
+   2024-10-01      S02 Annapurna Koramangala     Biscuits & Snacks      1513.15
+   2024-10-01      S02 Annapurna Koramangala         Confectionery      6374.93

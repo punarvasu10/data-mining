@@ -1,0 +1,31 @@
+PART (A) PARTITIONING EVIDENCE
+==============================
+
+Layout:
+sales/store_id=<store_id>/business_date=<YYYY-MM-DD>/data.parquet
+
+Example query:
+Store = S03
+Month = October 2024
+
+Files that can be considered:
+31
+
+Bytes:
+407116
+
+All sales objects:
+4389
+
+All sales bytes:
+44236871
+
+A single-folder layout could require scanning all 4389 objects
+(44,236,871 bytes). With the partitioned layout, the same query
+only needs to read the 31 objects under store_id=S03/
+business_date=2024-10-*/ — a total of 407,116 bytes.
+
+This demonstrates partition pruning: DuckDB reads ~0.92% of the
+data volume (407,116 / 44,236,871) and skips 4358 of 4389 objects
+(≈ 99.3%) because the store_id and business_date columns are
+encoded in the path.

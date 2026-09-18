@@ -1,0 +1,31 @@
+﻿FINAL VALIDATION
+================
+
+Warehouse fact rows: 1,120,924
+Warehouse total revenue: INR 522,865,735.75
+
+Revenue definition:
+SALE, RETURN, DISCOUNT and VOID included.
+TAX and TENDER excluded.
+
+Star schema:
+dim_date populated with 366 rows for leap year 2024.
+fact_sales_line loaded with 1,120,924 rows.
+Primary key: (bill_no, line_no).
+product_sk nullable to retain bill-level adjustments.
+v_sales_dashboard provides store/product/category/date analysis.
+
+Historical price:
+P100049 - Britannia Cream Biscuit 60g
+March 2024 price: INR 66.95
+October 2024 price: INR 68.93
+
+Cross-system:
+DuckDB reads curated Parquet from MinIO and joins PostgreSQL
+stores/products/product_categories without copying the master data.
+
+Reconciliation:
+Zero difference for Jan, Feb, Apr, May, Jun, Aug, Sep, Oct and Nov.
+March difference: INR -486,250.00.
+July difference: INR -232,131.70 due to missing S07 exports for July 9-11.
+December difference: INR +50.48.

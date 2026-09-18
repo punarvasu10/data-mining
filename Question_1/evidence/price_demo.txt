@@ -1,0 +1,12 @@
+HISTORICAL PRICE DEMO
+=====================
+
+Product: P100049 - Britannia Cream Biscuit 60g
+
+MARCH 2024
+product_code                product_name  selling_price effective_from effective_to
+     P100049 Britannia Cream Biscuit 60g          66.95     2022-01-01   2024-06-19
+
+OCTOBER 2024
+product_code                product_name  selling_price effective_from effective_to
+     P100049 Britannia Cream Biscuit 60g          68.93     2024-08-08   9999-12-31

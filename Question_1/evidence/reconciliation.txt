@@ -1,0 +1,50 @@
+﻿ANNAPURNA SALES RECONCILIATION
+================================
+
+Revenue definition:
+SALE, RETURN, DISCOUNT, VOID count as revenue.
+TAX and TENDER do not count.
+
+Monthly reconciliation:
+
+2024-01  Finance=38446071.33  Pipeline=38446071.33  Difference=0.00
+2024-02  Finance=34887085.55  Pipeline=34887085.55  Difference=0.00
+2024-03  Finance=42457899.09  Pipeline=41971649.09  Difference=-486250.00
+2024-04  Finance=37958457.37  Pipeline=37958457.37  Difference=0.00
+2024-05  Finance=41764716.40  Pipeline=41764716.40  Difference=0.00
+2024-06  Finance=38987082.82  Pipeline=38987082.82  Difference=0.00
+2024-07  Finance=40527291.81  Pipeline=40295160.11  Difference=-232131.70
+2024-08  Finance=45252181.75  Pipeline=45252181.75  Difference=0.00
+2024-09  Finance=44615037.46  Pipeline=44615037.46  Difference=0.00
+2024-10  Finance=56359195.92  Pipeline=56359195.92  Difference=0.00
+2024-11  Finance=51583838.47  Pipeline=51583838.47  Difference=0.00
+2024-12  Finance=50745209.00  Pipeline=50745259.48  Difference=50.48
+
+DIAGNOSIS
+=========
+March:
+All 12 stores have 31 days of source data.
+Pipeline equals raw source revenue.
+Therefore this is a source/finance reconciliation difference.
+Exact underlying cause is not established by the available monthly finance data.
+
+July:
+S07 has no source exports for 2024-07-09, 2024-07-10 and 2024-07-11.
+Pipeline equals the available raw source data.
+Vendor notes state that S07 had a three-day export gap and finance used
+phoned-in numbers.
+Therefore this is a source-data gap, not a pipeline calculation bug.
+
+December:
+All 12 stores have 31 days of source data.
+Pipeline equals raw source revenue.
+The remaining difference is only INR 50.48.
+Therefore this is a small source/finance reconciliation difference;
+no pipeline bug was identified.
+
+Pipeline bug fixed during development:
+1. Bill-level DISCOUNT rows were being dropped by an INNER JOIN to products.
+2. Product resolution was changed to LEFT JOIN.
+3. Revenue was restricted to SALE, RETURN, DISCOUNT and VOID.
+4. TAX and TENDER are excluded from revenue.
+5. Final fact row count: 1,120,924.
