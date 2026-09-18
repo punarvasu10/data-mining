@@ -1,0 +1,78 @@
+﻿==============================================================================
+(a) SIGNAL DEFINITION  --  how the score separates same vs different pairs
+==============================================================================
+
+Two same pairs and two different pairs, scored under two signals:
+
+  columns: choice-1 (body minus boilerplate)   choice-2 (Name-of-Work only)
+------------------------------------------------------------------------------
+  same       N010018 vs N010020     J_full=0.334     J_nameofwork=1.000
+  same       N005451 vs N005452     J_full=0.347     J_nameofwork=1.000
+  different  N007876 vs N008565     J_full=0.480     J_nameofwork=0.000
+  different  N008464 vs N010231     J_full=0.271     J_nameofwork=0.000
+
+Distributions over all 900 labelled pairs, under each choice:
+------------------------------------------------------------------------------
+  body - boilerplate      same: mean=0.750 min=0.279 |  different: mean=0.400 max=0.632
+  Name-of-Work only       same: mean=1.000 min=1.000 |  different: mean=0.030 max=0.778
+
+==============================================================================
+(b) MINHASH SIZE  --  measured error vs exact Jaccard on 900 labelled pairs
+==============================================================================
+
+  Application target: error <= 0.05 at p=0.8
+  Formula sqrt(p(1-p)/k) <= err  =>  k >= 64
+  We adopt k = 128 (2x headroom).
+
+  Realised error over n=900 pairs:
+    mean  = 0.0022
+    p50   = 0.0000
+    p95   = 0.0156
+    p99   = 0.0487
+    max   = 0.0982
+
+==============================================================================
+(c) LSH 32 x 4  --  P(retrieved | true similarity) and operating point
+==============================================================================
+
+  Curve for b=32 bands x r=4 rows = 128 perms:
+        s     P(retrieve|s)
+     0.10            0.0032
+     0.20            0.0500
+     0.30            0.2291
+     0.40            0.5639
+     0.50            0.8732
+     0.60            0.9882
+     0.70            0.9998
+     0.80            1.0000
+     0.90            1.0000
+     0.95            1.0000
+
+  Operating point: threshold 0.8 (cost asymmetry C_merge/C_split = 100:1)
+
+==============================================================================
+(d) DB access path  --  B-tree index vs full scan
+==============================================================================
+  use_index=True  plan=[(3, 0, 0, 'SEARCH lsh_bands USING INDEX idx_band_hash (band_hash=?)')]  time(1000 lookups)=0.065s
+  use_index=False  plan=[(2, 0, 0, 'SCAN lsh_bands')]  time(1000 lookups)=14.896s
+
+==============================================================================
+(e) Uneven work across the corpus + measured mitigation cost
+==============================================================================
+
+  Candidate list sizes:
+    min=0  median=283  p95=613  p99=691  max=765
+    top 1% contribute 2.5% of all candidate pairs
+    total candidate pairs: 3487768
+
+  Mitigation: cap candidate list at C
+        C       pairs  recall(same)  fp_rate(diff)
+     none     3487768         1.000          0.027
+      100     1063406         1.000          0.018
+       30      357347         1.000          0.006
+       10      119810         0.996          0.003
+        5       59967         0.975          0.002
+
+  Stable card IDs: unique=5194 of 12000  avg copies=2.31
+
+[done]
